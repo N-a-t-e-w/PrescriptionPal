@@ -22,4 +22,11 @@
         android:name="com.example.prescriptionpal.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_users"
+        android:name="com.example.prescriptionpal.ui.users.UsersFragment"
+        android:label="@string/title_users"
+        tools:layout="@layout/fragment_notifications" />
+
 </navigation>
