@@ -16,7 +16,5 @@ public class MainActivity extends AppCompatActivity {
 
         //heelo man guy sdgfasdfgadgasdgasd
 
-        ///ssss
-
     }
 }
