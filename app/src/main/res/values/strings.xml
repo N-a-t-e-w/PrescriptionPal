@@ -1,12 +1,8 @@
 <resources>
-    <string name="app_name">PrescriptionPal</string>
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_users">users</string>
-
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Prescription Pal</string>
+    <string name="home">Home</string>
+    <string name="today">Today</string>
+    <string name="prescriptions">Prescriptions</string>
+    <string name="history">History</string>
+    <string name="settings">Settings</string>
 </resources>
