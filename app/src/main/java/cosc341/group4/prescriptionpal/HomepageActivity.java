@@ -1,8 +1,10 @@
 package cosc341.group4.prescriptionpal;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class HomepageActivity extends AppCompatActivity {
 
@@ -10,5 +12,15 @@ public class HomepageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+    }
+
+    public void goToday(View view){
+        Intent intent = new Intent(getApplicationContext(), TodayActivity.class);
+        startActivity(intent);
+    }
+
+    public void goPrescriptions(View view){
+        Intent intent = new Intent(getApplicationContext(), PrescriptionActivity.class);
+        startActivity(intent);
     }
 }

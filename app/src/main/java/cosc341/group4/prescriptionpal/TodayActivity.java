@@ -1,11 +1,15 @@
 package cosc341.group4.prescriptionpal;
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ExpandableListView;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-import android.widget.ExpandableListView;
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,6 +19,13 @@ public class TodayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today);
+
+        TextView date = (TextView) findViewById(R.id.today_date_textview);
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE\nMMMM d");
+        Date d = new Date();
+        String dayOfTheWeek = sdf.format(d);
+
+        date.setText(dayOfTheWeek);
 
         ExpandableListView expandableListView = findViewById(R.id.expandableListView);
 
@@ -29,6 +40,7 @@ public class TodayActivity extends AppCompatActivity {
         TodayPrescriptionListAdapter adapter = new TodayPrescriptionListAdapter(item);
         expandableListView.setAdapter(adapter);
 
+
     }
 
     private void addPrescription(String[] infoArray,  HashMap<String, List<String>> item){
@@ -38,5 +50,9 @@ public class TodayActivity extends AppCompatActivity {
         prescriptionInfo.add(infoArray[3]);
 
         item.put(infoArray[0], prescriptionInfo);
+    }
+
+    public void goHome(View view){
+        finish();
     }
 }
