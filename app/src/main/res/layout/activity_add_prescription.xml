@@ -160,7 +160,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="208dp"
         android:background="@color/colorAccent"
-        android:text="Button"
+        android:text="@string/Time"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/QuestionTextView"
         app:layout_constraintStart_toStartOf="@+id/QuestionTextView"
