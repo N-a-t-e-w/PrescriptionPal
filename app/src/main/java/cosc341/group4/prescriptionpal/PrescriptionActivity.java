@@ -18,7 +18,7 @@ public class PrescriptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prescription);
 
-        ExpandableListView expandableListView = findViewById(R.id.expandableListView);
+        ExpandableListView expandableListView = findViewById(R.id.today_expandableListView);
         HashMap<String, List<String>> item = new HashMap<>();
 
         String[] infoArray = {"pill1", "pill2", "pill3", "pill4"};
