@@ -8,4 +8,15 @@
     <string name="confirm">I have taken this today</string>
     <string name="add">+</string>
 
+    <string name="Monday">Monday</string>
+    <string name="Tuesday">Tuesday</string>
+    <string name="Wednesday">Wednesday</string>
+    <string name="Thursday">Thursday</string>
+    <string name="Friday">Friday</string>
+    <string name="Saturday">Saturday</string>
+    <string name="Sunday">Sunday</string>
+
+    <string name="Time">Select Time</string>
+
+
 </resources>

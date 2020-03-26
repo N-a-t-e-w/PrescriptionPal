@@ -6,4 +6,164 @@
     android:layout_height="match_parent"
     tools:context=".addPrescription">
 
+    <CheckBox
+        android:id="@+id/addprescMondaychk"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Monday"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/addprescSaturdaychk"
+        app:layout_constraintStart_toStartOf="@+id/addprescSaturdaychk"
+        app:layout_constraintTop_toBottomOf="@+id/addprescSundaychk"
+        tools:text="@string/Monday" />
+
+    <CheckBox
+        android:id="@+id/addprescTuesdaychk"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Tuesday"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/addprescSaturdaychk"
+        app:layout_constraintStart_toStartOf="@+id/addprescSaturdaychk"
+        app:layout_constraintTop_toBottomOf="@+id/addprescMondaychk"
+        tools:text="@string/Tuesday" />
+
+    <CheckBox
+        android:id="@+id/addprescWednesdaychk"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Wednesday"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/addprescSaturdaychk"
+        app:layout_constraintStart_toStartOf="@+id/addprescSaturdaychk"
+        app:layout_constraintTop_toBottomOf="@+id/addprescTuesdaychk"
+        tools:text="@string/Wednesday" />
+
+    <CheckBox
+        android:id="@+id/addprescThursdaychk"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Thursday"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/addprescSaturdaychk"
+        app:layout_constraintStart_toStartOf="@+id/addprescSaturdaychk"
+        app:layout_constraintTop_toBottomOf="@+id/addprescWednesdaychk"
+        tools:text="@string/Thursday" />
+
+    <CheckBox
+        android:id="@+id/addprescFridaychk"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Friday"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/addprescSaturdaychk"
+        app:layout_constraintStart_toStartOf="@+id/addprescSaturdaychk"
+        app:layout_constraintTop_toBottomOf="@+id/addprescThursdaychk"
+        tools:text="@string/Friday" />
+
+    <CheckBox
+        android:id="@+id/addprescSundaychk"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="192dp"
+        android:gravity="center"
+        android:text="@string/Sunday"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/addprescSaturdaychk"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/addprescSaturdaychk"
+        app:layout_constraintTop_toBottomOf="@+id/QuestionTextView"
+        tools:text="@string/Sunday" />
+
+    <Button
+        android:id="@+id/addPresccancelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/colorAccent"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/addprescnxtBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/colorAccent"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/addPresccancelBtn"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/QuestionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/addprescAnswerEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="280dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="@+id/QuestionTextView"
+        app:layout_constraintStart_toStartOf="@+id/QuestionTextView"
+        app:layout_constraintTop_toBottomOf="@+id/QuestionTextView" />
+
+    <CheckBox
+        android:id="@+id/addprescSaturdaychk"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Saturday"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/QuestionTextView"
+        app:layout_constraintStart_toStartOf="@+id/QuestionTextView"
+        app:layout_constraintTop_toBottomOf="@+id/addprescFridaychk"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="@string/Saturday" />
+
+    <TextView
+        android:id="@+id/addpresctimeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="163dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/QuestionTextView"
+        app:layout_constraintStart_toStartOf="@+id/QuestionTextView"
+        app:layout_constraintTop_toBottomOf="@+id/QuestionTextView" />
+
+    <Button
+        android:id="@+id/addprescselecttimeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="208dp"
+        android:background="@color/colorAccent"
+        android:text="Button"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/QuestionTextView"
+        app:layout_constraintStart_toStartOf="@+id/QuestionTextView"
+        app:layout_constraintTop_toBottomOf="@+id/QuestionTextView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
