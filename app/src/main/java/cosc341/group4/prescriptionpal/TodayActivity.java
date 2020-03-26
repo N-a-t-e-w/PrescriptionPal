@@ -11,11 +11,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,11 +32,12 @@ public class TodayActivity extends AppCompatActivity {
         ExpandableListView expandableListView = findViewById(R.id.today_expandableListView);
         HashMap<String, List<String>> item = new HashMap<>();
 
-        JSONObject json = null;
+        JSONObject json;
         try {
             //Get the json object from the today.json file
             json = getJsonObject();
             //Get a json array of each prescription
+            assert json != null;
             JSONArray prescriptionArray = json.getJSONArray("Prescriptions");
 
             //Array list containing infoArrays for each prescription
@@ -85,7 +83,7 @@ public class TodayActivity extends AppCompatActivity {
 
     //Updates date textview to show the current date
     private void setDate(){
-        TextView date = (TextView) findViewById(R.id.today_date_textview);
+        TextView date = findViewById(R.id.today_date_textview);
         //Format the date
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE\nMMMM d");
         Date d = new Date();
@@ -94,8 +92,9 @@ public class TodayActivity extends AppCompatActivity {
         date.setText(dayOfTheWeek);
     }
 
+    //CODE ADAPTED FROM: https://abhiandroid.com/programming/json
     private JSONObject getJsonObject() throws JSONException {
-        String json = null;
+        String json;
         try{
             InputStream inputStream = getAssets().open("today.json");
             int size = inputStream.available();
