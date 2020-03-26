@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "cosc341.group4.prescriptionpal"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"

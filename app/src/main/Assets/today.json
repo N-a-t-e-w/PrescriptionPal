@@ -4,13 +4,15 @@
       "Name": "Tylenol",
       "Dosage": "500mg",
       "Time": "Once a day",
-      "Additional Info": "None"
+      "Additional Info": "None",
+      "Taken" : true
     },
     {
       "Name": "Cough Syrup",
       "Dosage": "100mg",
       "Time": "3 Times a day",
-      "Additional Info": "Might cause drowsiness."
+      "Additional Info": "Might cause drowsiness.",
+      "Taken" : false
     }
   ]
 }

@@ -27,7 +27,7 @@ public class PrescriptionActivity extends AppCompatActivity {
         }
 
 
-        TodayPrescriptionListAdapter adapter = new TodayPrescriptionListAdapter(item);
+        ManagePrescriptionListAdapter adapter = new ManagePrescriptionListAdapter(item);
         expandableListView.setAdapter(adapter);
     }
     private void addPrescription(String infoArray,  HashMap<String, List<String>> item){

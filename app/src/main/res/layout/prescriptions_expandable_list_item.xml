@@ -4,18 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="?android:listPreferredItemPaddingLeft"
-    android:paddingLeft="45dp"
-    android:paddingStart="45dp">
+    android:paddingLeft="5dp"
+    android:paddingStart="5dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/today_prescription_item"
+        android:id="@+id/prescriptions_prescription_item"
         android:textSize="24sp"
         android:text="Item"
-
         />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorBlack"/>
 
 
 </LinearLayout>
