@@ -12,13 +12,15 @@ import java.util.List;
 
 public class TodayPrescriptionListAdapter extends BaseExpandableListAdapter {
     private HashMap<String, List<String>> mStringListHashMap;
+    private HashMap<String, Boolean> mStringBooleanHashMap;
     private String[] mListHeaderGroup;
-    private Boolean[] checkBoxArray;
+    private String[] checkBoxArray;
 
-    public TodayPrescriptionListAdapter(HashMap<String, List<String>> stringListHashMap, Boolean[] checkBoxArray) {
+    public TodayPrescriptionListAdapter(HashMap<String, List<String>> stringListHashMap, HashMap <String, Boolean> stringBooleanHashMap) {
         mStringListHashMap = stringListHashMap;
+        mStringBooleanHashMap = stringBooleanHashMap;
         mListHeaderGroup = mStringListHashMap.keySet().toArray(new String[0]);
-        this.checkBoxArray = checkBoxArray;
+        checkBoxArray = mStringBooleanHashMap.keySet().toArray(new String[0]);
     }
 
     @Override
@@ -42,7 +44,7 @@ public class TodayPrescriptionListAdapter extends BaseExpandableListAdapter {
     }
 
     public Boolean getBoolean(int groupPosition){
-        return checkBoxArray[groupPosition];
+        return mStringBooleanHashMap.get(checkBoxArray[groupPosition]);
     }
 
     @Override

@@ -44,9 +44,10 @@ public class TodayActivity extends AppCompatActivity {
         //Create the list view and hash map for storing the prescription info
         expandableListView = findViewById(R.id.today_expandableListView);
         HashMap<String, List<String>> item = new HashMap<>();
-        Boolean[] checkBoxArray;
+        HashMap<String, Boolean> check = new HashMap<>();
 
         JSONObject json;
+
         try {
             //Get the json object from the today.json file
             json = getJsonObject();
@@ -56,9 +57,6 @@ public class TodayActivity extends AppCompatActivity {
 
             //Array list containing infoArrays for each prescription
             ArrayList<String[]> infoArrayList = new ArrayList<>();
-
-            //Initialize the checkBoxArray
-            checkBoxArray = new Boolean[prescriptionArray.length()];
 
             //Iterate through the json array and retrieve each prescription's info
             for (int i = 0; i < prescriptionArray.length(); i++){
@@ -70,7 +68,8 @@ public class TodayActivity extends AppCompatActivity {
                 String addInfo = prescriptionDetail.getString("Additional Info");
 
                 Boolean taken = prescriptionDetail.getBoolean("Taken");
-                checkBoxArray[i] = taken;
+                //Put whether the current medication has been taken into the check hashmap
+                check.put(name, taken);
 
 
                 String[] infoArray = {
@@ -85,7 +84,8 @@ public class TodayActivity extends AppCompatActivity {
 
             for (String[] infoArray : infoArrayList) addPrescription(infoArray, item);
 
-            TodayPrescriptionListAdapter adapter = new TodayPrescriptionListAdapter(item, checkBoxArray);
+
+            TodayPrescriptionListAdapter adapter = new TodayPrescriptionListAdapter(item, check);
             expandableListView.setAdapter(adapter);
 
         } catch (JSONException e) {
@@ -93,11 +93,15 @@ public class TodayActivity extends AppCompatActivity {
         }
     }
 
+    //Called when a checkbox is ticked/unticked on the today page
+    //Updates today.json 'taken' values for medications
     public void Confirmed(View view){
 
         CheckBox checkBox = view.findViewById(R.id.today_confirm_checkbox);
         Boolean taken = checkBox.isChecked();
         String name = checkBox.getContentDescription().toString();
+
+        System.out.println("NAME: " + name + " TAKEN: " + taken);
 
         JSONObject json;
         try {
@@ -106,22 +110,24 @@ public class TodayActivity extends AppCompatActivity {
             //Get a json array of each prescription
             assert json != null;
             JSONArray prescriptionArray = json.getJSONArray("Prescriptions");
+            JSONArray newPrescriptionArray = new JSONArray();
 
             for (int i = 0; i < prescriptionArray.length(); i++) {
                 JSONObject prescriptionDetail = prescriptionArray.getJSONObject(i);
-                if (prescriptionDetail.getString("Name").equals(name)){
-                    //Replace old prescription with updated values
-                    prescriptionArray.remove(i);
+                //Replace old prescription with updated values
+
+                if (prescriptionDetail.getString("Name").equals(name)) {
                     prescriptionDetail.put("Taken", taken);
-                    prescriptionArray.put(prescriptionDetail);
-                    json.put("Prescriptions", prescriptionArray);
-                    break;
+
                 }
+
+                newPrescriptionArray.put(prescriptionDetail);
+                json.put("Prescriptions", newPrescriptionArray);
             }
-//TODO FIX THIS DUMB DUMB SHIT
-//TODO GOTTA MAKE A LOCAL FILE TO WRITE TO
-            Writer output = null;
-            File file = new File("today.json");
+
+            //Rewrite updated json to today.json
+            Writer output;
+            File file = new File(getFilesDir()+"/today.json");
             output = new BufferedWriter(new FileWriter(file));
             output.write(json.toString());
             output.close();
@@ -156,12 +162,13 @@ public class TodayActivity extends AppCompatActivity {
     private JSONObject getJsonObject() throws JSONException {
         String json;
         try{
-            InputStream inputStream = getAssets().open("today.json");
+            InputStream inputStream = getApplicationContext().openFileInput("today.json");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
             inputStream.close();
             json = new String(buffer, "UTF-8");
+
         } catch (IOException ex) {
             ex.printStackTrace();
             return null;
