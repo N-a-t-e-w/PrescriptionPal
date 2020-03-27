@@ -6,16 +6,67 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    private static String sizeButton = "Medium";
+    private static boolean silent = true;
+    private static boolean notif = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        RadioButton small = findViewById(R.id.settings_small_radio);
+        RadioButton med = findViewById(R.id.settings_medium_radio);
+        RadioButton large = findViewById(R.id.settings_large_radio);
+
+        switch (sizeButton){
+            case "Small" :
+                small.setChecked(true);
+                break;
+            case "Medium":
+                med.setChecked(true);
+                break;
+            case "Large":
+                large.setChecked(true);
+                break;
+        }
+
+        Switch silentSwitch = findViewById(R.id.notification_silent_switch);
+        silentSwitch.setChecked(silent);
+        Switch notifSwitch = findViewById(R.id.notifications_off_switch);
+        notifSwitch.setChecked(notif);
+
+        Switch caretakerSwitch = findViewById(R.id.caretaker_switch);
+        caretakerSwitch.setChecked(HomepageActivity.CARETAKER_MODE);
+
+    }
+
+    @Override
+    protected void onStop() {
+
+        RadioButton small = findViewById(R.id.settings_small_radio);
+        RadioButton med = findViewById(R.id.settings_medium_radio);
+
+        if (small.isChecked()) sizeButton = "Small";
+        else if (med.isChecked()) sizeButton = "Medium";
+        else sizeButton = "Large";
+
+        Switch silentSwitch = findViewById(R.id.notification_silent_switch);
+        silent = silentSwitch.isChecked();
+
+        Switch notifSwitch = findViewById(R.id.notifications_off_switch);
+        notif = notifSwitch.isChecked();
+
+        super.onStop();
+
     }
 
     public void CaretakerMode(View view){
