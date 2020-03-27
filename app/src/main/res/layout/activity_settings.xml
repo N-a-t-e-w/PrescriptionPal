@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+
+    <TextView
+        android:id="@+id/settings_title_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/settings"
+        android:textColor="#000000"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/settings_main_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/settings_home_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_title_textview">
+
+        <LinearLayout
+            android:id="@+id/settings_fontsize_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal"
+            android:paddingTop="32dp"
+            android:paddingBottom="32dp">
+
+            <TextView
+                android:id="@+id/settings_fontsize_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/font_size"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/settings_fontsize_radiogroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:checkedButton="@id/settings_medium_radio"
+                android:onClick="NotAvailable">
+
+                <RadioButton
+                    android:id="@+id/settings_small_radio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="NotAvailable"
+                    android:text="@string/small"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/settings_medium_radio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:onClick="NotAvailable"
+                    android:text="@string/medium"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/settings_large_radio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="NotAvailable"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="32dp"
+                    android:text="@string/large"
+                    android:textSize="18sp" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/settings_notifications_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="vertical"
+            android:paddingTop="32dp"
+            android:paddingBottom="32dp">
+
+            <TextView
+                android:id="@+id/settings_notifications_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="@string/notifications"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/notification_switch_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:orientation="vertical">
+
+                <Switch
+                    android:id="@+id/notifications_off_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:onClick="NotAvailable"
+                    android:padding="8dp"
+                    android:text="@string/off"
+                    android:textSize="18sp" />
+
+                <Switch
+                    android:id="@+id/notification_silent_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:checked="true"
+                    android:onClick="NotAvailable"
+                    android:padding="8dp"
+                    android:text="@string/silent"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/settings_caretaker_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal"
+            android:paddingTop="32dp"
+            android:paddingBottom="32dp">
+
+            <Switch
+                android:id="@+id/caretaker_switch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="CaretakerMode"
+                android:paddingStart="0dp"
+                android:paddingEnd="8dp"
+                android:text="@string/caretaker"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/settings_home_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorAccent"
+        android:onClick="GoHome"
+        android:text="@string/home"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_title_textview"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/settings_rusure_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
+        android:gravity="center"
+        android:text="@string/rusure"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/settings_home_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_title_textview"
+        app:layout_constraintVertical_bias="0.19999999" />
+
+    <Button
+        android:id="@+id/rusure_yes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="Yes"
+        android:text="@string/yes"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBaseline_toBaselineOf="@+id/rusure_no"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rusure_no" />
+
+    <Button
+        android:id="@+id/rusure_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:onClick="No"
+        android:text="@string/no"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/settings_home_button"
+        app:layout_constraintEnd_toStartOf="@+id/rusure_yes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_rusure_textview"
+        app:layout_constraintVertical_bias="0.25" />
+</androidx.constraintlayout.widget.ConstraintLayout>

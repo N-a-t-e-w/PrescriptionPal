@@ -19,5 +19,18 @@
 
     <string name="Time">Select Time</string>
 
+    <string name="font_size">Font Size:</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="large">Large</string>
+    <string name="notifications">Notification Settings:</string>
+    <string name="silent">Silent Mode</string>
+    <string name="off">Turn off notifications</string>
+    <string name="caretaker">Caretaker Mode:</string>
+    <string name="rusure">Are you sure you want to turn on caretaker mode?</string>
+    <string name="rusureoff">Are you sure you want to turn off caretaker mode?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
 
 </resources>

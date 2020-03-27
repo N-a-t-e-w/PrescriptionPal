@@ -15,6 +15,8 @@ import java.io.Writer;
 
 public class HomepageActivity extends AppCompatActivity {
 
+    public static boolean CARETAKER_MODE = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,11 @@ public class HomepageActivity extends AppCompatActivity {
 
     public void goPrescriptions(View view){
         Intent intent = new Intent(getApplicationContext(), PrescriptionActivity.class);
+        startActivity(intent);
+    }
+
+    public void goSettings(View view){
+        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
         startActivity(intent);
     }
 
