@@ -29,6 +29,11 @@ public class HomepageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goHistory(View view){
+        Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
+        startActivity(intent);
+    }
+
     public void goPrescriptions(View view){
         Intent intent = new Intent(getApplicationContext(), PrescriptionActivity.class);
         startActivity(intent);
