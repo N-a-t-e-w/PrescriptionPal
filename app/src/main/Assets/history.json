@@ -1,0 +1,25 @@
+{
+  "Prescriptions": [
+    {
+      "Name": "Animal Crackers",
+      "Dosage": "7 Dinosaurs",
+      "Time": "3 Times a day",
+      "Additional Info": "WARNING: Highly addictive",
+      "Taken" : true
+    },
+    {
+      "Name": "Synthroid",
+      "Dosage": "75mcg",
+      "Time": "Once a day",
+      "Additional Info": "May cause headaches, nervousness, irritability or insomnia",
+      "Taken" : false
+    },
+    {
+      "Name": "Coffee",
+      "Dosage": "100 Cups",
+      "Time": "After receiving $300 from Richard Nixon",
+      "Additional Info": "Futurama joke",
+      "Taken" : true
+    }
+  ]
+}

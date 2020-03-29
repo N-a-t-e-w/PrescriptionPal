@@ -7,6 +7,26 @@
     tools:context=".HistoryActivity">
 
 
+    <LinearLayout
+        android:id="@+id/today_linearlayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
+        android:padding="?android:listPreferredItemPaddingLeft"
+        app:layout_constraintBottom_toTopOf="@+id/history_home_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/history_date_textview"
+        tools:visibility="invisible">
+
+        <ExpandableListView
+            android:id="@+id/today_expandableListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
     <com.github.sundeepk.compactcalendarview.CompactCalendarView
         android:id="@+id/history_compactcalendar_view"
         android:layout_width="fill_parent"
@@ -57,6 +77,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/history_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorAccent"
+        android:onClick="Back"
+        android:text="@string/back"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:id="@+id/history_date_textview"
         android:layout_width="wrap_content"
@@ -65,9 +100,10 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
-        android:text="June 4th\nWednesday"
-        android:textSize="24sp"
+        android:text="March - 2020"
+        android:textSize="30sp"
         android:textStyle="bold"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/history_title_textview" />

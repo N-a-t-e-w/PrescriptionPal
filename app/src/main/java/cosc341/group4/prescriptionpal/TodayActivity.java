@@ -1,5 +1,6 @@
 package cosc341.group4.prescriptionpal;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Debug;
@@ -39,7 +40,11 @@ public class TodayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today);
 
-        setDate();
+        Intent intent = getIntent();
+        if(intent == null) setDate();
+        else {
+
+        }
 
         //Create the list view and hash map for storing the prescription info
         expandableListView = findViewById(R.id.today_expandableListView);

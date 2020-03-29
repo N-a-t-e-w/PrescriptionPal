@@ -22,6 +22,7 @@ public class HomepageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
         initializeTodayJson();
+        initializeHistoryJson();
     }
 
     public void goToday(View view){
@@ -56,6 +57,26 @@ public class HomepageActivity extends AppCompatActivity {
 
             Writer output;
             File file = new File(getFilesDir()+"/today.json");
+            output = new BufferedWriter(new FileWriter(file));
+            output.write(json);
+            output.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void initializeHistoryJson(){
+        String json;
+        try{
+            InputStream inputStream = getAssets().open("history.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            json = new String(buffer, "UTF-8");
+
+            Writer output;
+            File file = new File(getFilesDir()+"/history.json");
             output = new BufferedWriter(new FileWriter(file));
             output.write(json);
             output.close();
