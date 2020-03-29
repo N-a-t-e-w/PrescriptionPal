@@ -8,7 +8,7 @@
 
 
     <LinearLayout
-        android:id="@+id/today_linearlayout"
+        android:id="@+id/history_linearlayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -22,7 +22,7 @@
         tools:visibility="invisible">
 
         <ExpandableListView
-            android:id="@+id/today_expandableListView"
+            android:id="@+id/history_expandableListView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

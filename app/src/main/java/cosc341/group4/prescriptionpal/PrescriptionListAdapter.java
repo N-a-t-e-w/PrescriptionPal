@@ -10,13 +10,13 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.List;
 
-public class TodayPrescriptionListAdapter extends BaseExpandableListAdapter {
+public class PrescriptionListAdapter extends BaseExpandableListAdapter {
     private HashMap<String, List<String>> mStringListHashMap;
     private HashMap<String, Boolean> mStringBooleanHashMap;
     private String[] mListHeaderGroup;
     private String[] checkBoxArray;
 
-    public TodayPrescriptionListAdapter(HashMap<String, List<String>> stringListHashMap, HashMap <String, Boolean> stringBooleanHashMap) {
+    public PrescriptionListAdapter(HashMap<String, List<String>> stringListHashMap, HashMap <String, Boolean> stringBooleanHashMap) {
         mStringListHashMap = stringListHashMap;
         mStringBooleanHashMap = stringBooleanHashMap;
         mListHeaderGroup = mStringListHashMap.keySet().toArray(new String[0]);

@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">Prescription Pal</string>
+    <string name="caretaker_enabled">Caretaker Mode</string>
     <string name="home">Home</string>
     <string name="today">Today</string>
     <string name="prescriptions">Prescriptions</string>
     <string name="today_title">Today\'s Prescriptions</string>
     <string name="history">History</string>
+    <string name="patients">My Patients</string>
     <string name="back">Back</string>
     <string name="settings">Settings</string>
     <string name="confirm">I have taken this today</string>

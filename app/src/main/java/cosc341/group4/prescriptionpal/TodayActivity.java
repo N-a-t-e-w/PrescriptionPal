@@ -1,18 +1,12 @@
 package cosc341.group4.prescriptionpal;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Debug;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
@@ -40,11 +34,7 @@ public class TodayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today);
 
-        Intent intent = getIntent();
-        if(intent == null) setDate();
-        else {
-
-        }
+        setDate();
 
         //Create the list view and hash map for storing the prescription info
         expandableListView = findViewById(R.id.today_expandableListView);
@@ -90,7 +80,7 @@ public class TodayActivity extends AppCompatActivity {
             for (String[] infoArray : infoArrayList) addPrescription(infoArray, item);
 
 
-            TodayPrescriptionListAdapter adapter = new TodayPrescriptionListAdapter(item, check);
+            PrescriptionListAdapter adapter = new PrescriptionListAdapter(item, check);
             expandableListView.setAdapter(adapter);
 
         } catch (JSONException e) {

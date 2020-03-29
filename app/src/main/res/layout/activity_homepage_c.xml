@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomepageActivity">
+
+    <ImageView
+        android:id="@+id/homepage_title_image"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <ImageButton
+        android:id="@+id/homepage_today_button"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="128dp"
+        android:background="@mipmap/todaybutton_background"
+        android:onClick="goToday"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:layout_constraintBottom_toTopOf="@+id/homepage_history_button"
+        app:layout_constraintEnd_toStartOf="@+id/homepage_prescriptions_button"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homepage_title_image"
+        app:srcCompat="@mipmap/todaybutton_foreground" />
+
+    <ImageButton
+        android:id="@+id/homepage_history_button"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="96dp"
+        android:background="@mipmap/historybutton_background"
+        android:onClick="goHistory"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:layout_constraintEnd_toStartOf="@+id/homepage_settings_button"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homepage_today_button"
+        app:srcCompat="@mipmap/historybutton_foreground" />
+
+    <ImageButton
+        android:id="@+id/homepage_settings_button"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="16dp"
+        android:background="@mipmap/settingsbutton_background"
+        android:onClick="goSettings"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/homepage_history_button"
+        app:layout_constraintTop_toBottomOf="@+id/homepage_prescriptions_button"
+        app:srcCompat="@mipmap/settingsbutton_foreground" />
+
+    <ImageButton
+        android:id="@+id/homepage_prescriptions_button"
+        style="@android:style/Widget.Holo.Light.ImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="16dp"
+        android:background="@mipmap/patientbutton_background"
+        android:onClick="goPatients"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:layout_constraintBottom_toTopOf="@+id/homepage_settings_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/homepage_today_button"
+        app:layout_constraintTop_toBottomOf="@+id/homepage_title_image"
+        app:srcCompat="@mipmap/patientbutton_foreground" />
+
+    <TextView
+        android:id="@+id/homepage_today_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/today"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/homepage_today_button"
+        app:layout_constraintStart_toStartOf="@+id/homepage_today_button"
+        app:layout_constraintTop_toBottomOf="@+id/homepage_today_button" />
+
+    <TextView
+        android:id="@+id/homepage_today_textview2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/history"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/homepage_history_button"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="@+id/homepage_history_button"
+        app:layout_constraintTop_toBottomOf="@+id/homepage_history_button" />
+
+    <TextView
+        android:id="@+id/homepage_today_textview3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/settings"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/homepage_today_textview2"
+        app:layout_constraintEnd_toEndOf="@+id/homepage_settings_button"
+        app:layout_constraintStart_toStartOf="@+id/homepage_settings_button" />
+
+    <TextView
+        android:id="@+id/homepage_prescriptions_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/patients"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/homepage_today_textview"
+        app:layout_constraintEnd_toEndOf="@+id/homepage_prescriptions_button"
+        app:layout_constraintStart_toStartOf="@+id/homepage_prescriptions_button" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/caretaker_enabled"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/homepage_today_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homepage_title_image"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,6 @@ package cosc341.group4.prescriptionpal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -85,7 +84,7 @@ public class HistoryActivity extends AppCompatActivity {
     private void showCalendar(){
         showingDay = false;
 
-        LinearLayout ll = findViewById(R.id.today_linearlayout);
+        LinearLayout ll = findViewById(R.id.history_linearlayout);
         ll.setVisibility(View.INVISIBLE);
 
         Button b = findViewById(R.id.history_back_button);
@@ -99,7 +98,7 @@ public class HistoryActivity extends AppCompatActivity {
     private void showDay(Date dateClicked){
         showingDay = true;
 
-        LinearLayout ll = findViewById(R.id.today_linearlayout);
+        LinearLayout ll = findViewById(R.id.history_linearlayout);
         ll.setVisibility(View.VISIBLE);
 
         Button b = findViewById(R.id.history_back_button);
@@ -109,14 +108,14 @@ public class HistoryActivity extends AppCompatActivity {
         SimpleDateFormat sdfDay = new SimpleDateFormat("EEEE\nMMMM d");
         date.setText(sdfDay.format(dateClicked));
 
-        ExpandableListView expandableListView = findViewById(R.id.today_expandableListView);
+        ExpandableListView expandableListView = findViewById(R.id.history_expandableListView);
         HashMap<String, List<String>> item = new HashMap<>();
         HashMap<String, Boolean> check = new HashMap<>();
 
         JSONObject json;
 
         try {
-            //Get the json object from the today.json file
+            //Get the json object from the history.json file
             json = getJsonObject();
             //Get a json array of each prescription
             assert json != null;
@@ -152,7 +151,7 @@ public class HistoryActivity extends AppCompatActivity {
             for (String[] infoArray : infoArrayList) addPrescription(infoArray, item);
 
 
-            TodayPrescriptionListAdapter adapter = new TodayPrescriptionListAdapter(item, check);
+            PrescriptionListAdapter adapter = new PrescriptionListAdapter(item, check);
             expandableListView.setAdapter(adapter);
 
         } catch (JSONException e) {

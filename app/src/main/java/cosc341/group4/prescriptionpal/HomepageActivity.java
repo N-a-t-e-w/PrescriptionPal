@@ -20,9 +20,20 @@ public class HomepageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_homepage);
+        if(CARETAKER_MODE) setContentView(R.layout.activity_homepage_c);
+        else setContentView(R.layout.activity_homepage);
+
         initializeTodayJson();
         initializeHistoryJson();
+        initializePatientsJson();
+    }
+
+    @Override
+    protected void onResume() {
+        if (CARETAKER_MODE) setContentView(R.layout.activity_homepage_c);
+        else setContentView(R.layout.activity_homepage);
+
+        super.onResume();
     }
 
     public void goToday(View view){
@@ -37,6 +48,11 @@ public class HomepageActivity extends AppCompatActivity {
 
     public void goPrescriptions(View view){
         Intent intent = new Intent(getApplicationContext(), PrescriptionActivity.class);
+        startActivity(intent);
+    }
+
+    public void goPatients(View view){
+        Intent intent = new Intent(getApplicationContext(), PatientsActivity.class);
         startActivity(intent);
     }
 
@@ -77,6 +93,26 @@ public class HomepageActivity extends AppCompatActivity {
 
             Writer output;
             File file = new File(getFilesDir()+"/history.json");
+            output = new BufferedWriter(new FileWriter(file));
+            output.write(json);
+            output.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void initializePatientsJson(){
+        String json;
+        try{
+            InputStream inputStream = getAssets().open("patients.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            json = new String(buffer, "UTF-8");
+
+            Writer output;
+            File file = new File(getFilesDir()+"/patients.json");
             output = new BufferedWriter(new FileWriter(file));
             output.write(json);
             output.close();
