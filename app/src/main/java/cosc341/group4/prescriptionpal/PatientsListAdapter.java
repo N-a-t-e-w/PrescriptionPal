@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -57,6 +58,9 @@ public class PatientsListAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         if(convertView == null)
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.patients_expandable_list_group, parent, false);
+
+        Button button = convertView.findViewById(R.id.patients_prescription_button);
+        button.setContentDescription(String.valueOf(getGroup(groupPosition)));
 
         TextView textView = convertView.findViewById(R.id.patients_prescription_group);
         textView.setText(String.valueOf(getGroup(groupPosition)));
