@@ -56,9 +56,9 @@ public class PatientsListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         if(convertView == null)
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.prescriptions_expandable_list_group, parent, false);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.patients_expandable_list_group, parent, false);
 
-        TextView textView = convertView.findViewById(R.id.prescriptions_prescription_group);
+        TextView textView = convertView.findViewById(R.id.patients_prescription_group);
         textView.setText(String.valueOf(getGroup(groupPosition)));
         return convertView;
     }
@@ -66,9 +66,9 @@ public class PatientsListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         if(convertView == null)
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.prescriptions_expandable_list_item, parent, false);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.patients_expandable_list_item, parent, false);
 
-        TextView textView = convertView.findViewById(R.id.prescriptions_prescription_item);
+        TextView textView = convertView.findViewById(R.id.patients_prescription_item);
         textView.setText(String.valueOf(getChild(groupPosition, childPosition)));
         return convertView;
     }

@@ -18,7 +18,7 @@ public class PrescriptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prescription);
 
-        ExpandableListView expandableListView = findViewById(R.id.today_expandableListView);
+        ExpandableListView expandableListView = findViewById(R.id.prescriptions_expandableListView);
         HashMap<String, List<String>> item = new HashMap<>();
 
         String[] infoArray = {"pill1", "pill2", "pill3", "pill4"};
@@ -27,7 +27,7 @@ public class PrescriptionActivity extends AppCompatActivity {
         }
 
 
-        ManagePrescriptionListAdapter adapter = new ManagePrescriptionListAdapter(item);
+        PrescriptionListAdapter adapter = new PrescriptionListAdapter(item);
         expandableListView.setAdapter(adapter);
     }
     private void addPrescription(String infoArray,  HashMap<String, List<String>> item){

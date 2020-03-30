@@ -151,7 +151,7 @@ public class HistoryActivity extends AppCompatActivity {
             for (String[] infoArray : infoArrayList) addPrescription(infoArray, item);
 
 
-            PrescriptionListAdapter adapter = new PrescriptionListAdapter(item, check);
+            TodayListAdapter adapter = new TodayListAdapter(item, check);
             expandableListView.setAdapter(adapter);
 
         } catch (JSONException e) {

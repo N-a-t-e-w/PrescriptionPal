@@ -1,6 +1,5 @@
 package cosc341.group4.prescriptionpal;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -80,7 +79,7 @@ public class TodayActivity extends AppCompatActivity {
             for (String[] infoArray : infoArrayList) addPrescription(infoArray, item);
 
 
-            PrescriptionListAdapter adapter = new PrescriptionListAdapter(item, check);
+            TodayListAdapter adapter = new TodayListAdapter(item, check);
             expandableListView.setAdapter(adapter);
 
         } catch (JSONException e) {
