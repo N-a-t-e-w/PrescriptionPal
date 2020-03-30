@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -12,10 +13,11 @@ import java.util.List;
 public class PrescriptionListAdapter extends BaseExpandableListAdapter {
     private HashMap<String, List<String>> mStringListHashMap;
     private String[] mListHeaderGroup;
-
+    private String[] ButtonArray;
     public PrescriptionListAdapter(HashMap<String, List<String>> stringListHashMap) {
         mStringListHashMap = stringListHashMap;
         mListHeaderGroup = mStringListHashMap.keySet().toArray(new String[0]);
+        ButtonArray = mStringListHashMap.keySet().toArray(new String[0]);
     }
 
     @Override
@@ -60,6 +62,8 @@ public class PrescriptionListAdapter extends BaseExpandableListAdapter {
 
         TextView textView = convertView.findViewById(R.id.prescriptions_prescription_group);
         textView.setText(String.valueOf(getGroup(groupPosition)));
+        Button editPrescript = convertView.findViewById(R.id.editPrescriptBtn);
+        editPrescript.setContentDescription(String.valueOf(getGroup(groupPosition)));
         return convertView;
     }
 

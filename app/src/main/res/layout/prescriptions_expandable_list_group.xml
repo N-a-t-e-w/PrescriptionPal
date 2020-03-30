@@ -7,13 +7,33 @@
     android:paddingLeft="35dp"
     android:paddingStart="35dp">
 
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/prescriptions_prescription_group"
         android:textSize="24sp"
-        android:text="Group"
-        />
+        android:text="Group"/>
+        </LinearLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent"
+            android:id="@+id/editPrescriptBtn"
+            android:focusable="false"
+            android:textSize="18sp"
+            android:text="@string/edit"
+            android:onClick="editPrescript"/>
+    </LinearLayout>
+
+
+    </LinearLayout>

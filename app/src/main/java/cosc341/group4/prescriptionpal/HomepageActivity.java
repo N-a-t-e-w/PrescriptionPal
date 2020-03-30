@@ -26,6 +26,9 @@ public class HomepageActivity extends AppCompatActivity {
         initializeTodayJson();
         initializeHistoryJson();
         initializePatientsJson();
+
+        //USED TO INITIALLY CREATE EMPTY JSON
+        //initializeUserPrescriptions();
     }
 
     @Override
@@ -113,6 +116,25 @@ public class HomepageActivity extends AppCompatActivity {
 
             Writer output;
             File file = new File(getFilesDir()+"/patients.json");
+            output = new BufferedWriter(new FileWriter(file));
+            output.write(json);
+            output.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    private void initializeUserPrescriptions(){
+        String json;
+        try{
+            InputStream inputStream = getAssets().open("UserPrescriptions.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            json = new String(buffer, "UTF-8");
+
+            Writer output;
+            File file = new File(getFilesDir()+"/UserPrescriptions.json");
             output = new BufferedWriter(new FileWriter(file));
             output.write(json);
             output.close();

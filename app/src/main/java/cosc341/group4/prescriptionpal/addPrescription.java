@@ -15,9 +15,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
 
 public class addPrescription extends AppCompatActivity {
@@ -217,19 +220,43 @@ public class addPrescription extends AppCompatActivity {
             JSONArray days = new JSONArray((Arrays.asList(finaldays)));
             prescript.put("Days", days);
             prescript.put("Info", finalinfo);
-            String filename = finalname+"presc";
-            String contents = prescript.toString();
             FileOutputStream outputStream;
-            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+            String filename = finalname+"presc.json";
+            String contents = prescript.toString();
+            /*outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
             outputStream.write(contents.getBytes());
-            outputStream.close();
-            filename = "prescriptions";
-            outputStream = openFileOutput(filename, Context.MODE_APPEND);
-            contents = finalname + "\n";
+            outputStream.close();*/
+
+            filename = "UserPrescriptions.json";
+            JSONObject userprescripts = getJsonObject(filename);
+            JSONObject newObject = new JSONObject();
+            JSONArray prescriptsarray = userprescripts.getJSONArray("Prescriptions");
+            JSONObject thisprescript = new JSONObject();
+            thisprescript.put("Name",finalname);
+            prescriptsarray.put(prescript);
+            newObject.put("Prescriptions",prescriptsarray);
+            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+            contents = newObject.toString();
             outputStream.write(contents.getBytes());
             finish();
         }catch(Exception e){
         }
+    }
+    private JSONObject getJsonObject(String filename) throws JSONException {
+        String json;
+        try{
+            InputStream inputStream = getApplicationContext().openFileInput(filename);
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            json = new String(buffer, "UTF-8");
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return new JSONObject(json);
     }
 
 }
