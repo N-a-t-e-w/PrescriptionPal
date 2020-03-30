@@ -220,6 +220,7 @@ public class addPrescription extends AppCompatActivity {
             JSONArray days = new JSONArray((Arrays.asList(finaldays)));
             prescript.put("Days", days);
             prescript.put("Info", finalinfo);
+            prescript.put("Taken", false);
             FileOutputStream outputStream;
             String filename = finalname+"presc.json";
             String contents = prescript.toString();

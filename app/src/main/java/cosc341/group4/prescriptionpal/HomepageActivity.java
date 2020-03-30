@@ -30,7 +30,7 @@ public class HomepageActivity extends AppCompatActivity {
         initializePatientsTodayJson();
 
         //USED TO INITIALLY CREATE EMPTY JSON
-        //initializeUserPrescriptions();
+        initializeUserPrescriptions();
     }
 
     @Override

@@ -228,6 +228,7 @@ public class EditPrescription extends AppCompatActivity {
                 JSONArray aadays = new JSONArray((Arrays.asList(newdays)));
                 prescript.put("Days", aadays);
                 prescript.put("Info", info);
+                prescript.put("Taken", false);
                 FileOutputStream outputStream;
 
                 String filename = "UserPrescriptions.json";
