@@ -95,6 +95,7 @@ public class PrescriptionActivity extends AppCompatActivity {
     //CODE ADAPTED FROM: https://abhiandroid.com/programming/json
     private JSONObject getJsonObject() throws JSONException {
         String json;
+
         try{
             InputStream inputStream = getApplicationContext().openFileInput("UserPrescriptions.json");
             int size = inputStream.available();
