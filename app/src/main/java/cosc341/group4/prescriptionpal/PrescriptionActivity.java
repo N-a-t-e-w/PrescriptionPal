@@ -26,6 +26,63 @@ public class PrescriptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prescription);
 
+        updatePrescriptions();
+    }
+    //private void addPrescription(String infoArray,  HashMap<String, List<String>> item){
+    //    ArrayList<String> prescriptionInfo = new ArrayList<>();
+    //    item.put(infoArray, prescriptionInfo);
+    //}
+
+    @Override
+    protected void onResume() {
+        updatePrescriptions();
+        super.onResume();
+    }
+
+    private void addPrescription(String[] infoArray,  HashMap<String, List<String>> item){
+        ArrayList<String> prescriptionInfo = new ArrayList<>();
+        prescriptionInfo.add(infoArray[1]); //Dosage
+        prescriptionInfo.add(infoArray[2]); //Time
+        prescriptionInfo.add(infoArray[3]); //Additional Info
+
+        item.put(infoArray[0], prescriptionInfo);
+    }
+
+    public void goHome(View view){
+        finish();
+    }
+    public void addPrescript(View view){
+        Intent intent = new Intent(getApplicationContext(), addPrescription.class);
+        startActivity(intent);
+    }
+
+    //CODE ADAPTED FROM: https://abhiandroid.com/programming/json
+    private JSONObject getJsonObject() throws JSONException {
+        String json;
+
+        try{
+            InputStream inputStream = getApplicationContext().openFileInput("UserPrescriptions.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            json = new String(buffer, "UTF-8");
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return new JSONObject(json);
+    }
+    public void editPrescript(View view){
+        Button btn = view.findViewById(R.id.editPrescriptBtn);
+        String prescriptname = btn.getContentDescription().toString();
+        Intent intent = new Intent(getApplicationContext(), EditPrescription.class);
+        intent.putExtra("Name",prescriptname);
+        startActivity(intent);
+    }
+
+    private void updatePrescriptions(){
         expandableListView = findViewById(R.id.prescriptions_expandableListView);
         HashMap<String, List<String>> item = new HashMap<>();
 
@@ -70,51 +127,5 @@ public class PrescriptionActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
-    //private void addPrescription(String infoArray,  HashMap<String, List<String>> item){
-    //    ArrayList<String> prescriptionInfo = new ArrayList<>();
-    //    item.put(infoArray, prescriptionInfo);
-    //}
-    private void addPrescription(String[] infoArray,  HashMap<String, List<String>> item){
-        ArrayList<String> prescriptionInfo = new ArrayList<>();
-        prescriptionInfo.add(infoArray[1]); //Dosage
-        prescriptionInfo.add(infoArray[2]); //Time
-        prescriptionInfo.add(infoArray[3]); //Additional Info
-
-        item.put(infoArray[0], prescriptionInfo);
-    }
-
-    public void goHome(View view){
-        finish();
-    }
-    public void addPrescript(View view){
-        Intent intent = new Intent(getApplicationContext(), addPrescription.class);
-        startActivity(intent);
-    }
-
-    //CODE ADAPTED FROM: https://abhiandroid.com/programming/json
-    private JSONObject getJsonObject() throws JSONException {
-        String json;
-
-        try{
-            InputStream inputStream = getApplicationContext().openFileInput("UserPrescriptions.json");
-            int size = inputStream.available();
-            byte[] buffer = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
-            json = new String(buffer, "UTF-8");
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return new JSONObject(json);
-    }
-    public void editPrescript(View view){
-        Button btn = view.findViewById(R.id.editPrescriptBtn);
-        String prescriptname = btn.getContentDescription().toString();
-        Intent intent = new Intent(getApplicationContext(), EditPrescription.class);
-        intent.putExtra("Name",prescriptname);
-        startActivity(intent);
     }
 }
