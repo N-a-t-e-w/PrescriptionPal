@@ -70,9 +70,17 @@ public class TodayActivity extends AppCompatActivity {
                 JSONObject prescriptionDetail = prescriptionArray.getJSONObject(i);
 
                 String name = prescriptionDetail.getString("Name");
-                String dosage = prescriptionDetail.getString("Dosage");
+                String dosage = String.valueOf(prescriptionDetail.getInt("Dosage"));
                 String time = prescriptionDetail.getString("Time");
-                String addInfo = prescriptionDetail.getString("Additional Info");
+
+                String days = "";
+                JSONArray jDays = prescriptionDetail.getJSONArray("Days");
+                for(int j = 0; j<jDays.length(); j++){
+                    days += jDays.getString(j);
+                    if(j + 1 != jDays.length()) days+=", ";
+                }
+
+                String addInfo = prescriptionDetail.getString("Info");
 
                 Boolean taken = prescriptionDetail.getBoolean("Taken");
                 //Put whether the current medication has been taken into the check hashmap
@@ -82,7 +90,8 @@ public class TodayActivity extends AppCompatActivity {
                 String[] infoArray = {
                         name,
                         "Dosage: " + dosage,
-                        "When: " + time,
+                        "Time: " + time,
+                        "Days" + days,
                         "Additional Information:\n" + addInfo
                 };
                 //Add the infoArray to the Array list
@@ -136,8 +145,8 @@ public class TodayActivity extends AppCompatActivity {
             Writer output;
             File file;
 
-            if(HomepageActivity.CARETAKER_MODE) file = new File(getFilesDir()+"/today.json");
-            else file = new File(getFilesDir()+"/patientstoday.json");
+            if(HomepageActivity.CARETAKER_MODE) file = new File(getFilesDir()+"/patientstoday.json");
+            else file = new File(getFilesDir()+"/UserPrescriptions.json");
 
             output = new BufferedWriter(new FileWriter(file));
             output.write(json.toString());
@@ -153,7 +162,8 @@ public class TodayActivity extends AppCompatActivity {
         ArrayList<String> prescriptionInfo = new ArrayList<>();
         prescriptionInfo.add(infoArray[1]); //Dosage
         prescriptionInfo.add(infoArray[2]); //Time
-        prescriptionInfo.add(infoArray[3]); //Additional Info
+        prescriptionInfo.add(infoArray[3]); //Days
+        prescriptionInfo.add(infoArray[4]); //Additional Info
 
         item.put(infoArray[0], prescriptionInfo);
     }
@@ -175,7 +185,7 @@ public class TodayActivity extends AppCompatActivity {
         try{
             InputStream inputStream;
             if(HomepageActivity.CARETAKER_MODE) inputStream = getApplicationContext().openFileInput("patientstoday.json");
-            else  inputStream = getApplicationContext().openFileInput("today.json");
+            else  inputStream = getApplicationContext().openFileInput("UserPrescriptions.json");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);

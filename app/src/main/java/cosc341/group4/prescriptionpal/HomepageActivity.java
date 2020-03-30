@@ -84,7 +84,7 @@ public class HomepageActivity extends AppCompatActivity {
 
     private void initializeFile(String filename){
         String json;
-        if(fileExists(getApplicationContext(), filename)) return;
+        //if(fileExists(getApplicationContext(), filename)) return;
         try{
             InputStream inputStream = getAssets().open(filename);
             int size = inputStream.available();

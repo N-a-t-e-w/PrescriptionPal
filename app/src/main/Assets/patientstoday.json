@@ -2,16 +2,18 @@
   "Prescriptions": [
     {
       "Name": "Vicodin",
-      "Dosage": "100mg",
-      "Time": "3 Times a day",
-      "Additional Info": "Might cause lightheadedness or dizziness. Call doctor if patient is having trouble breathing or thinking.",
+      "Dosage": 100,
+      "Time": "12:00",
+      "Days" : ["Saturday"],
+      "Info": "Might cause lightheadedness or dizziness. Call doctor if patient is having trouble breathing or thinking.",
       "Taken" : true
     },
     {
       "Name": "Levothyroxine",
-      "Dosage": "500mg",
-      "Time": "Once a day",
-      "Additional Info": "For treating Hypothyroidism. Can cause chest pain and increased heart rate.",
+      "Dosage": 500,
+      "Time": "18:00",
+      "Days" : ["Monday","Wednesday","Friday"],
+      "Info": "For treating Hypothyroidism. Can cause chest pain and increased heart rate.",
       "Taken" : false
     }
   ]

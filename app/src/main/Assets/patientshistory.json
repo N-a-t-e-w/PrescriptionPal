@@ -2,23 +2,26 @@
   "Prescriptions": [
     {
       "Name": "Simvastatin",
-      "Dosage": "50mcg",
-      "Time": "4 Times a day",
-      "Additional Info": "WARNING: Can cause muscle breakdown.",
+      "Dosage": 50,
+      "Time": "17:00",
+      "Days": ["Sunday","Monday","Friday"],
+      "Info": "WARNING: Can cause muscle breakdown.",
       "Taken" : true
     },
     {
       "Name": "Amlodipine",
-      "Dosage": "75mcg",
-      "Time": "Once a day",
-      "Additional Info": "May cause dizziness or headaches.",
+      "Dosage": 75,
+      "Time": "7:00",
+      "Days": ["Sunday","Friday"],
+      "Info": "May cause dizziness or headaches.",
       "Taken" : false
     },
     {
       "Name": "Vicodin",
-      "Dosage": "100mg",
-      "Time": "3 Times a day",
-      "Additional Info": "None",
+      "Dosage": 100,
+      "Time": "9:00",
+      "Days": ["Monday","Friday","Saturday"],
+      "Info": "None",
       "Taken" : true
     }
   ]
