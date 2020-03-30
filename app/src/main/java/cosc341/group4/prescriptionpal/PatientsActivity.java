@@ -2,9 +2,12 @@ package cosc341.group4.prescriptionpal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,12 +22,22 @@ import java.util.List;
 public class PatientsActivity extends AppCompatActivity {
 
     ExpandableListView expandableListView;
+    private String from;
+
+    public static final String PATIENT = "PATIENT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patients);
 
+        Intent intent = getIntent();
+        from = intent.getStringExtra(HomepageActivity.CARETAKER);
+
+        if(!from.equals("Patients")){
+            TextView textView = findViewById(R.id.patients_title_textview);
+            textView.setText(R.string.choosepatient);
+        }
 
         //Create the list view and hash map for storing the prescription info
         expandableListView = findViewById(R.id.patients_expandableListView);
@@ -96,6 +109,32 @@ public class PatientsActivity extends AppCompatActivity {
             return null;
         }
         return new JSONObject(json);
+    }
+
+    public void ViewPatient(View view){
+
+        if(from.equals("Patients")) {
+            Intent intent = new Intent(getApplicationContext(), PrescriptionActivity.class);
+            startActivity(intent);
+        }else if(from.equals("Today")){
+
+            Button b = view.findViewById(R.id.patients_prescription_button);
+            String name = b.getContentDescription().toString();
+
+            Intent intent = new Intent(getApplicationContext(), TodayActivity.class);
+            intent.putExtra(PATIENT, name);
+
+            startActivity(intent);
+        }else if(from.equals("History")){
+
+            Button b = view.findViewById(R.id.patients_prescription_button);
+            String name = b.getContentDescription().toString();
+
+            Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
+            intent.putExtra(PATIENT, name);
+
+            startActivity(intent);
+        }
     }
 
     public void goHome(View view){

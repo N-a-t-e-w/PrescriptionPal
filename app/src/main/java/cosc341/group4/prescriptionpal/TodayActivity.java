@@ -1,7 +1,9 @@
 package cosc341.group4.prescriptionpal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
@@ -32,6 +34,17 @@ public class TodayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today);
+
+        Intent intent = getIntent();
+        String patient = intent.getStringExtra(PatientsActivity.PATIENT);
+        if(patient != null){
+            TextView textView = findViewById(R.id.today_title_textview);
+            String titletext = patient +"'s Prescriptions for Today";
+            textView.setText(titletext);
+
+            Button button = findViewById(R.id.today_home_button);
+            button.setText(R.string.back);
+        }
 
         setDate();
 
@@ -121,7 +134,11 @@ public class TodayActivity extends AppCompatActivity {
 
             //Rewrite updated json to today.json
             Writer output;
-            File file = new File(getFilesDir()+"/today.json");
+            File file;
+
+            if(HomepageActivity.CARETAKER_MODE) file = new File(getFilesDir()+"/today.json");
+            else file = new File(getFilesDir()+"/patientstoday.json");
+
             output = new BufferedWriter(new FileWriter(file));
             output.write(json.toString());
             output.close();
@@ -156,7 +173,9 @@ public class TodayActivity extends AppCompatActivity {
     private JSONObject getJsonObject() throws JSONException {
         String json;
         try{
-            InputStream inputStream = getApplicationContext().openFileInput("today.json");
+            InputStream inputStream;
+            if(HomepageActivity.CARETAKER_MODE) inputStream = getApplicationContext().openFileInput("patientstoday.json");
+            else  inputStream = getApplicationContext().openFileInput("today.json");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);

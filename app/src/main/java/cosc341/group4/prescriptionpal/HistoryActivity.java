@@ -2,6 +2,7 @@ package cosc341.group4.prescriptionpal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +41,17 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+
+        Intent intent = getIntent();
+        String patient = intent.getStringExtra(PatientsActivity.PATIENT);
+        if(patient != null){
+            TextView textView = findViewById(R.id.history_title_textview);
+            String titletext = patient +"'s Prescription History";
+            textView.setText(titletext);
+
+            Button button = findViewById(R.id.history_home_button);
+            button.setText(R.string.back);
+        }
 
         date = findViewById(R.id.history_date_textview);
 
@@ -171,7 +183,11 @@ public class HistoryActivity extends AppCompatActivity {
     private JSONObject getJsonObject() throws JSONException {
         String json;
         try{
-            InputStream inputStream = getApplicationContext().openFileInput("history.json");
+            InputStream inputStream;
+
+            if(HomepageActivity.CARETAKER_MODE) inputStream = getApplicationContext().openFileInput("history.json");
+            else inputStream = getApplicationContext().openFileInput("patienthistory.json");
+
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
@@ -217,7 +233,9 @@ public class HistoryActivity extends AppCompatActivity {
 
             //Rewrite updated json to today.json
             Writer output;
-            File file = new File(getFilesDir()+"/history.json");
+            File file;
+            if(HomepageActivity.CARETAKER_MODE) file = new File(getFilesDir()+"/history.json");
+            else file = new File(getFilesDir()+"/patientshistory.json");
             output = new BufferedWriter(new FileWriter(file));
             output.write(json.toString());
             output.close();
