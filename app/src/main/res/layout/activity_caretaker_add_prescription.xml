@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CaretakerAddPrescription">
+
+    <Button
+        android:id="@+id/EditprescCancelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/colorAccent"
+        android:onClick="cancel"
+        android:text="@string/Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/editPrescCnfrmBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/colorAccent"
+        android:onClick="ConfirmAdd"
+        android:text="@string/confrim"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/addPresccancelBtn"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:text="Name:"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/EditNameEditText"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/EditDosageEditTExt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/EditNameEditText"
+        app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Dosage"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <CheckBox
+        android:id="@+id/addprescSundaychk2"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Sunday"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/EditDosageEditTExt"
+        app:layout_constraintTop_toTopOf="@+id/textView4"
+        tools:text="@string/Sunday" />
+
+    <CheckBox
+        android:id="@+id/addprescSaturdaychk2"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Saturday"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/addprescSundaychk2"
+        app:layout_constraintTop_toBottomOf="@+id/addprescFridaychk2"
+        tools:text="@string/Saturday" />
+
+    <CheckBox
+        android:id="@+id/addprescThursdaychk2"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Thursday"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/addprescSundaychk2"
+        app:layout_constraintTop_toBottomOf="@+id/addprescWednesdaychk2"
+        tools:text="@string/Thursday" />
+
+    <CheckBox
+        android:id="@+id/addprescFridaychk2"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Friday"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/addprescSundaychk2"
+        app:layout_constraintTop_toBottomOf="@+id/addprescThursdaychk2"
+        tools:text="@string/Friday" />
+
+    <CheckBox
+        android:id="@+id/addprescWednesdaychk2"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Wednesday"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/addprescSundaychk2"
+        app:layout_constraintTop_toBottomOf="@+id/addprescTuesdaychk2"
+        tools:text="@string/Wednesday" />
+
+    <CheckBox
+        android:id="@+id/addprescTuesdaychk2"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Tuesday"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/addprescSundaychk2"
+        app:layout_constraintTop_toBottomOf="@+id/addprescMondaychk2"
+        tools:text="@string/Tuesday" />
+
+    <CheckBox
+        android:id="@+id/addprescMondaychk2"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Monday"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/addprescSundaychk2"
+        app:layout_constraintTop_toBottomOf="@+id/addprescSundaychk2"
+        tools:text="@string/Monday" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:text="Days"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/AddInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
+        android:text="Additional Info:"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addprescSaturdaychk2" />
+
+    <EditText
+        android:id="@+id/EditPrescInfoEditText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/EditprescCancelBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AddInfo"
+        app:layout_constraintVertical_bias="0.924" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="57dp"
+        android:layout_height="35dp"
+        android:text="Time"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/addprescSundaychk2"
+        app:layout_constraintTop_toTopOf="@+id/addprescSundaychk2" />
+
+    <TextView
+        android:id="@+id/EditPrescTimeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Button
+        android:id="@+id/editPrescTimeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@color/colorAccent"
+        android:text="Set Time"
+        app:layout_constraintEnd_toEndOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/EditPrescTimeTV" />
+</androidx.constraintlayout.widget.ConstraintLayout>

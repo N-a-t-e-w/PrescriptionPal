@@ -1,13 +1,13 @@
 package cosc341.group4.prescriptionpal;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -115,6 +115,9 @@ public class PatientsActivity extends AppCompatActivity {
 
         if(from.equals("Patients")) {
             Intent intent = new Intent(getApplicationContext(), PrescriptionActivity.class);
+            Button b = view.findViewById(R.id.patients_prescription_button);
+            String name = b.getContentDescription().toString();
+            intent.putExtra(PATIENT, name);
             startActivity(intent);
         }else if(from.equals("Today")){
 
