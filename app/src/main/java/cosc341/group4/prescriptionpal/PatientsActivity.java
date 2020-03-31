@@ -38,7 +38,15 @@ public class PatientsActivity extends AppCompatActivity {
             TextView textView = findViewById(R.id.patients_title_textview);
             textView.setText(R.string.choosepatient);
         }
+        update();
 
+    }
+    protected void onResume(){
+        update();
+        super.onResume();
+    }
+
+    private void update(){
         //Create the list view and hash map for storing the prescription info
         expandableListView = findViewById(R.id.patients_expandableListView);
         HashMap<String, List<String>> item = new HashMap<>();
@@ -83,6 +91,7 @@ public class PatientsActivity extends AppCompatActivity {
                 JSONException e) {
             e.printStackTrace();
         }
+
     }
 
     private void addPatient(String[] infoArray,  HashMap<String, List<String>> item){
@@ -139,7 +148,11 @@ public class PatientsActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+    public void addPatient(View view){
+        Intent intent = new Intent(getApplicationContext(),AddPatient.class);
+        startActivity(intent);
 
+    }
     public void goHome(View view){
         finish();
     }

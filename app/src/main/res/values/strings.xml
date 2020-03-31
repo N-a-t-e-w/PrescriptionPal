@@ -39,6 +39,13 @@
     <string name="edit">Edit</string>
     <string name="confrim">Confirm</string>
     <string name="Cancel">Cancel</string>
+    <string name="PatientName">Patient Name:</string>
+    <string name="PatientAge">Patient Age:</string>
+    <string name="PatientInfo">Patient Info:</string>
+    <string name="AddPatient">Add Patient</string>
+
+
+
 
 
 </resources>

@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".PatientsActivity">
 
+    <Button
+        android:id="@+id/PatientAddPatientBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorAccent"
+        android:onClick="addPatient"
+        android:text="@string/add"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/patients_home_button" />
+
     <TextView
         android:id="@+id/patients_title_textview"
         android:layout_width="wrap_content"

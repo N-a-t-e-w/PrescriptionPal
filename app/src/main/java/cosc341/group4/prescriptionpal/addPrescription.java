@@ -191,20 +191,19 @@ public class addPrescription extends AppCompatActivity {
     }
     private void prescInfo(final TextView tv, final Button bbtn, final Button nbtn, final EditText answr, final String[] question){
         tv.setText(question[4]);
-        answr.setVisibility(View.VISIBLE);
-        answr.setInputType(InputType.TYPE_CLASS_TEXT);
-        answr.setText("");
+        final EditText infobox = findViewById(R.id.AddPresciptAdditionalInfoET);
+        infobox.setVisibility(View.VISIBLE);
         bbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                answr.setVisibility(View.INVISIBLE);
+                infobox.setVisibility(View.INVISIBLE);
                 prescTime(tv,bbtn,nbtn,answr,question);
             }
         });
         nbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finalinfo = answr.getText().toString();
+                finalinfo = infobox.getText().toString();
                 writejson();
             }
         });

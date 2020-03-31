@@ -4,16 +4,6 @@
       "Name": "Bob Brown",
       "Age": 60,
       "Additional Info": "None"
-    },
-    {
-      "Name": "John McKay",
-      "Age": 89,
-      "Additional Info": "Allergic to peanuts."
-    },
-    {
-      "Name": "Robert Downey Sr.",
-      "Age": 83,
-      "Additional Info": "Despises raisins with a passion."
     }
   ]
 }
