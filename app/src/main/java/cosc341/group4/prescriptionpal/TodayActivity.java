@@ -46,7 +46,7 @@ public class TodayActivity extends AppCompatActivity {
             button.setText(R.string.back);
         }
 
-        setDate();
+        final String day = setDate();
 
         //Create the list view and hash map for storing the prescription info
         expandableListView = findViewById(R.id.today_expandableListView);
@@ -99,7 +99,11 @@ public class TodayActivity extends AppCompatActivity {
                         "Additional Information:\n" + addInfo
                 };
                 //Add the infoArray to the Array list
-                infoArrayList.add(infoArray);
+                //System.out.println("DAY:" + day);
+                //System.out.println("DAYs:" + days);
+                if (days.contains(day)){
+                    infoArrayList.add(infoArray);
+                }
             }
 
             for (String[] infoArray : infoArrayList) addPrescription(infoArray, item);
@@ -182,14 +186,17 @@ public class TodayActivity extends AppCompatActivity {
     }
 
     //Updates date textview to show the current date
-    private void setDate(){
+    private String setDate(){
         TextView date = findViewById(R.id.today_date_textview);
         //Format the date
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE\nMMMM d");
+        SimpleDateFormat theday = new SimpleDateFormat("EEEE");
         Date d = new Date();
         String dayOfTheWeek = sdf.format(d);
+        String day = theday.format(d);
         //Update the textview
         date.setText(dayOfTheWeek);
+        return day;
     }
 
     //CODE ADAPTED FROM: https://abhiandroid.com/programming/json
