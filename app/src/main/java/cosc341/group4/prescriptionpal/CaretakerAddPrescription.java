@@ -36,7 +36,7 @@ public class CaretakerAddPrescription extends AppCompatActivity {
         setContentView(R.layout.activity_caretaker_add_prescription);
         final TextView TimeTv = findViewById(R.id.EditPrescTimeTV);
         Intent intent = getIntent();
-        pname = intent.getStringExtra("PATIENT");
+        pname = intent.getStringExtra("PATIENT").split(" ")[0];
 
         final Context mcontext = this;
         Button setttime = findViewById(R.id.editPrescTimeBtn);
@@ -128,10 +128,11 @@ public class CaretakerAddPrescription extends AppCompatActivity {
     public void cancel(View v){
     finish();
     }
+
     private JSONObject getJsonObject() throws JSONException {
         String json;
         try{
-            InputStream inputStream = getApplicationContext().openFileInput("UserPrescriptions.json");
+            InputStream inputStream = getApplicationContext().openFileInput(pname + "Prescriptions.json");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);

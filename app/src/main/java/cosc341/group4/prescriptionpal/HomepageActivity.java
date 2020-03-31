@@ -80,6 +80,7 @@ public class HomepageActivity extends AppCompatActivity {
         initializeFile("patientshistory.json");
         initializeFile("patientstoday.json");
         initializeFile("UserPrescriptions.json");
+        initializeFile("bobPrescriptions.json");
     }
 
     private void initializeFile(String filename){

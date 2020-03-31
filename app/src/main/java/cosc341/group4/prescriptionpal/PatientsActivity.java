@@ -117,7 +117,7 @@ public class PatientsActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), PrescriptionActivity.class);
             Button b = view.findViewById(R.id.patients_prescription_button);
             String name = b.getContentDescription().toString();
-            intent.putExtra(PATIENT, name);
+            intent.putExtra(PATIENT, name.toLowerCase());
             startActivity(intent);
         }else if(from.equals("Today")){
 
