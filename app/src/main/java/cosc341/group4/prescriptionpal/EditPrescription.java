@@ -33,12 +33,15 @@ public class EditPrescription extends AppCompatActivity {
     String time;
     String[] newdays;
     int pos = -1;
+    String patientname;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_prescription);
         Intent intent =  getIntent();
         prescName = intent.getStringExtra("Name");
+        patientname = intent.getStringExtra("PATIENT");
+
         populate();
         final TextView TimeTv = findViewById(R.id.EditPrescTimeTV);
         final EditText nameEdit = findViewById(R.id.EditNameEditText);
@@ -91,10 +94,30 @@ public class EditPrescription extends AppCompatActivity {
             }
             return new JSONObject(json);
         }
+    private JSONObject getJsonObject(String pname) throws JSONException {
+        String json;
+        try{
+            InputStream inputStream = getApplicationContext().openFileInput(pname +"Prescriptions.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            json = new String(buffer, "UTF-8");
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return new JSONObject(json);
+    }
 
         private void populate(){
             try {
-                allPrescripts = getJsonObject();
+                if (patientname != null){
+                    allPrescripts = getJsonObject(patientname.toLowerCase().split(" ")[0]);
+                }else{
+                    allPrescripts = getJsonObject();
+                }
                 JSONArray prescriptionArray = allPrescripts.getJSONArray("Prescriptions");
                 for (int i = 0; i < prescriptionArray.length(); i++) {
                     JSONObject prescriptionDetail = prescriptionArray.getJSONObject(i);
@@ -230,10 +253,15 @@ public class EditPrescription extends AppCompatActivity {
                 prescript.put("Info", info);
                 prescript.put("Taken", false);
                 FileOutputStream outputStream;
-
-                String filename = "UserPrescriptions.json";
+                String filename;
+                if (patientname != null){
+                    filename = patientname.toLowerCase().split(" ")[0] + "Prescriptions.json";
+                }else{
+                    filename = "UserPrescriptions.json";
+                }
                 JSONObject userprescripts = getJsonObject();
                 JSONObject newObject = new JSONObject();
+
                 JSONArray prescriptsarray = userprescripts.getJSONArray("Prescriptions");
                 prescriptsarray.remove(pos);
                 JSONObject thisprescript = new JSONObject();

@@ -94,8 +94,11 @@ public class PrescriptionActivity extends AppCompatActivity {
     }
     public void editPrescript(View view){
         Button btn = view.findViewById(R.id.editPrescriptBtn);
-        String prescriptname = btn.getContentDescription().toString();
         Intent intent = new Intent(getApplicationContext(), EditPrescription.class);
+        if(patname != null){
+            intent.putExtra("PATIENT",patname);
+        }
+        String prescriptname = btn.getContentDescription().toString();
         intent.putExtra("Name",prescriptname);
         startActivity(intent);
     }
