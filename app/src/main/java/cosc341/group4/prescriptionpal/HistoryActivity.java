@@ -1,7 +1,5 @@
 package cosc341.group4.prescriptionpal;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +8,8 @@ import android.widget.CheckBox;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 
@@ -36,14 +36,14 @@ public class HistoryActivity extends AppCompatActivity {
     private SimpleDateFormat sdf = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
     private TextView date;
     private boolean showingDay = false;
-
+    String patient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
         Intent intent = getIntent();
-        String patient = intent.getStringExtra(PatientsActivity.PATIENT);
+        patient = intent.getStringExtra(PatientsActivity.PATIENT);
         if(patient != null){
             TextView textView = findViewById(R.id.history_title_textview);
             String titletext = patient +"'s Prescription History";
@@ -93,6 +93,7 @@ public class HistoryActivity extends AppCompatActivity {
         date.setText(monthYear);
     }
 
+
     private void showCalendar(){
         showingDay = false;
 
@@ -118,7 +119,9 @@ public class HistoryActivity extends AppCompatActivity {
 
         compactCalendar.setVisibility(View.INVISIBLE);
         SimpleDateFormat sdfDay = new SimpleDateFormat("EEEE\nMMMM d");
+        SimpleDateFormat chooseday = new SimpleDateFormat("EEEE");
         date.setText(sdfDay.format(dateClicked));
+        String day = chooseday.format(dateClicked);
 
         ExpandableListView expandableListView = findViewById(R.id.history_expandableListView);
         HashMap<String, List<String>> item = new HashMap<>();
@@ -128,7 +131,11 @@ public class HistoryActivity extends AppCompatActivity {
 
         try {
             //Get the json object from the history.json file
-            json = getJsonObject();
+            if (patient != null){
+                json = getJsonObject(patient.toLowerCase().split(" ")[0]);
+            }else{
+                json = getJsonObject();
+            }
             //Get a json array of each prescription
             assert json != null;
             JSONArray prescriptionArray = json.getJSONArray("Prescriptions");
@@ -166,7 +173,9 @@ public class HistoryActivity extends AppCompatActivity {
                         "Additional Information:\n" + addInfo
                 };
                 //Add the infoArray to the Array list
-                infoArrayList.add(infoArray);
+                if (days.contains(day)){
+                    infoArrayList.add(infoArray);
+                }
             }
 
             for (String[] infoArray : infoArrayList) addPrescription(infoArray, item);
@@ -195,9 +204,26 @@ public class HistoryActivity extends AppCompatActivity {
         try{
             InputStream inputStream;
 
-            if(HomepageActivity.CARETAKER_MODE) inputStream = getApplicationContext().openFileInput("patientshistory.json");
-            else inputStream = getApplicationContext().openFileInput("history.json");
 
+            inputStream = getApplicationContext().openFileInput("UserPrescriptions.json");
+
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            json = new String(buffer, "UTF-8");
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return new JSONObject(json);
+    }
+    private JSONObject getJsonObject(String name) throws JSONException {
+        String json;
+        try{
+            InputStream inputStream;
+            inputStream = getApplicationContext().openFileInput(name +"Prescriptions.json");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
@@ -255,6 +281,7 @@ public class HistoryActivity extends AppCompatActivity {
         }
 
     }
+
 
 
     public void goHome(View view){
