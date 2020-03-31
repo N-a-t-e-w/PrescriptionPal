@@ -29,14 +29,14 @@ import java.util.List;
 public class TodayActivity extends AppCompatActivity {
 
     ExpandableListView expandableListView;
-
+    String patient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today);
 
         Intent intent = getIntent();
-        String patient = intent.getStringExtra(PatientsActivity.PATIENT);
+        patient = intent.getStringExtra(PatientsActivity.PATIENT);
         if(patient != null){
             TextView textView = findViewById(R.id.today_title_textview);
             String titletext = patient +"'s Prescriptions for Today";
@@ -57,7 +57,11 @@ public class TodayActivity extends AppCompatActivity {
 
         try {
             //Get the json object from the today.json file
-            json = getJsonObject();
+            if (patient != null){
+                json = getJsonObject(patient.toLowerCase().split(" ")[0]);
+            }else{
+                json = getJsonObject();
+            }
             //Get a json array of each prescription
             assert json != null;
             JSONArray prescriptionArray = json.getJSONArray("Prescriptions");
@@ -122,7 +126,11 @@ public class TodayActivity extends AppCompatActivity {
         JSONObject json;
         try {
             //Get the json object from the today.json file
-            json = getJsonObject();
+            if (patient != null){
+                json = getJsonObject(patient.toLowerCase().split(" ")[0]);
+            }else{
+                json = getJsonObject();
+            }
             //Get a json array of each prescription
             assert json != null;
             JSONArray prescriptionArray = json.getJSONArray("Prescriptions");
@@ -145,8 +153,13 @@ public class TodayActivity extends AppCompatActivity {
             Writer output;
             File file;
 
-            if(HomepageActivity.CARETAKER_MODE) file = new File(getFilesDir()+"/patientstoday.json");
-            else file = new File(getFilesDir()+"/UserPrescriptions.json");
+            //if(HomepageActivity.CARETAKER_MODE) file = new File(getFilesDir()+"/patientstoday.json");
+            if (patient != null){
+                file = new File(getFilesDir()+"/" + patient.toLowerCase().split(" ")[0] + "Prescriptions.json");
+            }else{
+                file = new File(getFilesDir()+"/UserPrescriptions.json");
+            }
+
 
             output = new BufferedWriter(new FileWriter(file));
             output.write(json.toString());
@@ -186,6 +199,23 @@ public class TodayActivity extends AppCompatActivity {
             InputStream inputStream;
             if(HomepageActivity.CARETAKER_MODE) inputStream = getApplicationContext().openFileInput("patientstoday.json");
             else  inputStream = getApplicationContext().openFileInput("UserPrescriptions.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            json = new String(buffer, "UTF-8");
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return new JSONObject(json);
+    }
+    private JSONObject getJsonObject(String name) throws JSONException {
+        String json;
+        try{
+            InputStream inputStream;
+            inputStream = getApplicationContext().openFileInput(name +"Prescriptions.json");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
