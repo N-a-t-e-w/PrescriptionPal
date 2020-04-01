@@ -75,10 +75,7 @@ public class HomepageActivity extends AppCompatActivity {
     }
 
     private void initializeFiles(){
-        //initializeFile("history.json");
         initializeFile("patients.json");
-       //initializeFile("patientshistory.json");
-        //initializeFile("patientstoday.json");
         initializeFile("UserPrescriptions.json");
         initializeFile("bobPrescriptions.json");
     }

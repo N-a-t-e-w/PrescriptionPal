@@ -10,10 +10,13 @@
         android:id="@+id/editprescCancelBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/colorAccent"
         android:text="@string/Cancel"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -21,9 +24,11 @@
         android:id="@+id/EditPrescDeleteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorDelete"
         android:onClick="deletePrescription"
         android:text="@string/Delete"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/editPrescCnfrmBtn"
         app:layout_constraintStart_toEndOf="@+id/editprescCancelBtn"
         app:layout_constraintTop_toTopOf="@+id/editPrescCnfrmBtn" />
@@ -32,11 +37,13 @@
         android:id="@+id/editPrescCnfrmBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/colorAccent"
         android:onClick="confirmEdit"
         android:text="@string/confrim"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/addPresccancelBtn"
@@ -202,7 +209,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AddInfo"
-        app:layout_constraintVertical_bias="0.924" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView6"
@@ -228,7 +235,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorEdit"
         android:text="Set Time"
         app:layout_constraintEnd_toEndOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="@+id/textView6"

@@ -130,7 +130,7 @@ public class HistoryActivity extends AppCompatActivity {
         JSONObject json;
 
         try {
-            //Get the json object from the history.json file
+            //Get the json object from the .json file
             if (patient != null){
                 json = getJsonObject(patient.toLowerCase().split(" ")[0]);
             }else{
@@ -247,7 +247,7 @@ public class HistoryActivity extends AppCompatActivity {
 
         JSONObject json;
         try {
-            //Get the json object from the today.json file
+            //Get the json object from the prescriptions.json file
             json = getJsonObject();
             //Get a json array of each prescription
             assert json != null;
@@ -267,7 +267,7 @@ public class HistoryActivity extends AppCompatActivity {
                 json.put("Prescriptions", newPrescriptionArray);
             }
 
-            //Rewrite updated json to today.json
+            //Rewrite updated json to prescriptions.json
             Writer output;
             File file;
             if(HomepageActivity.CARETAKER_MODE) file = new File(getFilesDir()+"/" + patient.toLowerCase().split(" ")[0] + "Prescriptions.json");

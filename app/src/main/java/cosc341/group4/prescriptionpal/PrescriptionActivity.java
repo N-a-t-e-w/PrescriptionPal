@@ -110,7 +110,7 @@ public class PrescriptionActivity extends AppCompatActivity {
         JSONObject json;
 
         try {
-            //Get the json object from the today.json file
+            //Get the json object from the prescriptions.json file
             json = getJsonObject();
             //Get a json array of each prescription
             assert json != null;
@@ -156,7 +156,7 @@ public class PrescriptionActivity extends AppCompatActivity {
         JSONObject json;
 
         try {
-            //Get the json object from the today.json file
+            //Get the json object from the prescriptions.json file
             json = getJsonObject(pname);
             //Get a json array of each prescription
             assert json != null;

@@ -56,7 +56,7 @@ public class TodayActivity extends AppCompatActivity {
         JSONObject json;
 
         try {
-            //Get the json object from the today.json file
+            //Get the json object from the prescriptions.json file
             if (patient != null){
                 json = getJsonObject(patient.toLowerCase().split(" ")[0]);
             }else{
@@ -118,7 +118,7 @@ public class TodayActivity extends AppCompatActivity {
     }
 
     //Called when a checkbox is ticked/unticked on the today page
-    //Updates today.json 'taken' values for medications
+    //Updates prescriptions.json 'taken' values for medications
     public void Confirmed(View view){
 
         CheckBox checkBox = view.findViewById(R.id.today_confirm_checkbox);
@@ -129,7 +129,7 @@ public class TodayActivity extends AppCompatActivity {
 
         JSONObject json;
         try {
-            //Get the json object from the today.json file
+            //Get the json object from the prescriptions.json file
             if (patient != null){
                 json = getJsonObject(patient.toLowerCase().split(" ")[0]);
             }else{
@@ -153,11 +153,10 @@ public class TodayActivity extends AppCompatActivity {
                 json.put("Prescriptions", newPrescriptionArray);
             }
 
-            //Rewrite updated json to today.json
+            //Rewrite updated json to prescriptions.json
             Writer output;
             File file;
 
-            //if(HomepageActivity.CARETAKER_MODE) file = new File(getFilesDir()+"/patientstoday.json");
             if (patient != null){
                 file = new File(getFilesDir()+"/" + patient.toLowerCase().split(" ")[0] + "Prescriptions.json");
             }else{
@@ -204,8 +203,7 @@ public class TodayActivity extends AppCompatActivity {
         String json;
         try{
             InputStream inputStream;
-            if(HomepageActivity.CARETAKER_MODE) inputStream = getApplicationContext().openFileInput("patientstoday.json");
-            else  inputStream = getApplicationContext().openFileInput("UserPrescriptions.json");
+            inputStream = getApplicationContext().openFileInput("UserPrescriptions.json");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
