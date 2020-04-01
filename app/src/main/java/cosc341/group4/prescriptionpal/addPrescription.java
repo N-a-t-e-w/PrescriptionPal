@@ -166,8 +166,8 @@ public class addPrescription extends AppCompatActivity {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         String tempmin;
-                        if (minute == 0){
-                            tempmin = "00";
+                        if (minute < 10){
+                            tempmin = "0"+minute;
                             selectedtime.setText(hourOfDay + ":" + tempmin);
                             finalTime = hourOfDay + ":" + tempmin;
                         }else {
