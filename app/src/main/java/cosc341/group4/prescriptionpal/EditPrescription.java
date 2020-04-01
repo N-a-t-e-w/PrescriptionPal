@@ -236,16 +236,17 @@ public class EditPrescription extends AppCompatActivity {
 
         prescName = nameEdit.getText().toString();
         info = infoEdit.getText().toString();
-        dosage = Integer.parseInt(dosEdit.getText().toString());
+        String tempDosage = dosEdit.getText().toString();
         time = TimeTv.getText().toString();
 
         if (prescName.length()<3){
             Toast.makeText(getApplicationContext(),"Name must be more than 3 characters long",Toast.LENGTH_SHORT).show();
-        }else if (dosage<=0){
-            Toast.makeText(getApplicationContext(),"Please enter a valid number",Toast.LENGTH_SHORT).show();
+        }else if (tempDosage.length()<1){
+            Toast.makeText(getApplicationContext(),"Please enter a valid dosage",Toast.LENGTH_SHORT).show();
         }else if(newdays.length < 1){
             Toast.makeText(getApplicationContext(),"Please select atleast 1 day",Toast.LENGTH_SHORT).show();
         }else{
+            dosage = Integer.parseInt(tempDosage);
             JSONObject prescript = new JSONObject();
             try{
                 prescript.put("Name",prescName);
