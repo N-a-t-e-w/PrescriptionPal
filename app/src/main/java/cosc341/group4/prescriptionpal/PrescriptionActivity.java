@@ -56,7 +56,8 @@ public class PrescriptionActivity extends AppCompatActivity {
         ArrayList<String> prescriptionInfo = new ArrayList<>();
         prescriptionInfo.add(infoArray[1]); //Dosage
         prescriptionInfo.add(infoArray[2]); //Time
-        prescriptionInfo.add(infoArray[3]); //Additional Info
+        prescriptionInfo.add(infoArray[3]); //Days
+        prescriptionInfo.add(infoArray[4]); //Additional Info
 
         item.put(infoArray[0], prescriptionInfo);
     }
@@ -126,6 +127,14 @@ public class PrescriptionActivity extends AppCompatActivity {
                 String name = prescriptionDetail.getString("Name");
                 String dosage = prescriptionDetail.getString("Dosage");
                 String time = prescriptionDetail.getString("Time");
+
+                String days = "";
+                JSONArray jDays = prescriptionDetail.getJSONArray("Days");
+                for(int j = 0; j<jDays.length(); j++){
+                    days += jDays.getString(j);
+                    if(j + 1 != jDays.length()) days+=", ";
+                }
+
                 String addInfo = prescriptionDetail.getString("Info");
                 //Put whether the current medication has been taken into the check hashmap
 
@@ -133,6 +142,7 @@ public class PrescriptionActivity extends AppCompatActivity {
                         name,
                         "Dosage: " + dosage,
                         "When: " + time,
+                        "Days: " + days,
                         "Additional Information:\n" + addInfo
                 };
                 //Add the infoArray to the Array list
@@ -172,6 +182,14 @@ public class PrescriptionActivity extends AppCompatActivity {
                 String name = prescriptionDetail.getString("Name");
                 String dosage = prescriptionDetail.getString("Dosage");
                 String time = prescriptionDetail.getString("Time");
+
+                String days = "";
+                JSONArray jDays = prescriptionDetail.getJSONArray("Days");
+                for(int j = 0; j<jDays.length(); j++){
+                    days += jDays.getString(j);
+                    if(j + 1 != jDays.length()) days+=", ";
+                }
+
                 String addInfo = prescriptionDetail.getString("Info");
                 //Put whether the current medication has been taken into the check hashmap
 
@@ -179,6 +197,7 @@ public class PrescriptionActivity extends AppCompatActivity {
                         name,
                         "Dosage: " + dosage,
                         "When: " + time,
+                        "Days: " + days,
                         "Additional Information:\n" + addInfo
                 };
                 //Add the infoArray to the Array list

@@ -95,7 +95,7 @@ public class TodayActivity extends AppCompatActivity {
                         name,
                         "Dosage: " + dosage,
                         "Time: " + time,
-                        "Days" + days,
+                        "Days: " + days,
                         "Additional Information:\n" + addInfo
                 };
                 //Add the infoArray to the Array list
