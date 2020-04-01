@@ -282,12 +282,15 @@ public class EditPrescription extends AppCompatActivity {
         try{
             FileOutputStream outputStream;
             String filename;
+            JSONObject userprescripts;
             if (patientname != null){
                 filename = patientname.toLowerCase().split(" ")[0] + "Prescriptions.json";
+                userprescripts = getJsonObject(patientname.toLowerCase().split(" ")[0]);
             }else{
                 filename = "UserPrescriptions.json";
+                userprescripts = getJsonObject();
             }
-            JSONObject userprescripts = getJsonObject();
+
             JSONObject newObject = new JSONObject();
             JSONArray prescriptsarray = userprescripts.getJSONArray("Prescriptions");
             System.out.println(pos);
