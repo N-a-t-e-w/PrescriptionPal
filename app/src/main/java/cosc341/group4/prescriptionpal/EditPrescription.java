@@ -243,7 +243,9 @@ public class EditPrescription extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Name must be more than 3 characters long",Toast.LENGTH_SHORT).show();
         }else if (dosage<=0){
             Toast.makeText(getApplicationContext(),"Please enter a valid number",Toast.LENGTH_SHORT).show();
-        }else {
+        }else if(newdays.length < 1){
+            Toast.makeText(getApplicationContext(),"Please select atleast 1 day",Toast.LENGTH_SHORT).show();
+        }else{
             JSONObject prescript = new JSONObject();
             try{
                 prescript.put("Name",prescName);

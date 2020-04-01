@@ -130,6 +130,7 @@ public class addPrescription extends AppCompatActivity {
                         count++;
                     }
                 }
+                if(count>0){
                 String[] daystring = new String[count];
                 count = 0;
                 for (CheckBox day : days){
@@ -141,6 +142,10 @@ public class addPrescription extends AppCompatActivity {
                 }
                 finaldays = daystring;
                 prescTime(tv,bbtn,nbtn,answr,question);
+            }else{
+                    Toast.makeText(getApplicationContext(),"Select atleast 1 day",Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 
