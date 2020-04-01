@@ -270,8 +270,8 @@ public class HistoryActivity extends AppCompatActivity {
             //Rewrite updated json to today.json
             Writer output;
             File file;
-            if(HomepageActivity.CARETAKER_MODE) file = new File(getFilesDir()+"/patientshistory.json");
-            else file = new File(getFilesDir()+"/history.json");
+            if(HomepageActivity.CARETAKER_MODE) file = new File(getFilesDir()+"/" + patient.toLowerCase().split(" ")[0] + "Prescriptions.json");
+            else file = new File(getFilesDir()+"/UserPrescriptions.json");
             output = new BufferedWriter(new FileWriter(file));
             output.write(json.toString());
             output.close();

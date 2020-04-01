@@ -71,6 +71,9 @@ public class TodayListAdapter extends BaseExpandableListAdapter {
         textView.setText(String.valueOf(getGroup(groupPosition)));
         CheckBox confirm = convertView.findViewById(R.id.today_confirm_checkbox);
         confirm.setChecked(getBoolean(groupPosition));
+        if (HomepageActivity.CARETAKER_MODE){
+            confirm.setText("Administered");
+        }
         //Use the content description to determine which checkbox is activated later
         confirm.setContentDescription(String.valueOf(getGroup(groupPosition)));
         return convertView;
