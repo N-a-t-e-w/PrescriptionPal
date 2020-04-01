@@ -187,6 +187,9 @@ public class addPrescription extends AppCompatActivity {
                     settime.setVisibility(View.INVISIBLE);
                     selectedtime.setVisibility(View.INVISIBLE);
                     prescInfo(tv,bbtn,nbtn,answr,question);
+                }else{
+                    Toast.makeText(getApplicationContext(),"Select a time",Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
