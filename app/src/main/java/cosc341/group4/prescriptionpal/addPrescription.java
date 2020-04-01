@@ -165,8 +165,15 @@ public class addPrescription extends AppCompatActivity {
                 TimePickerDialog tpd = new TimePickerDialog(mcontext, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        selectedtime.setText(hourOfDay + ":" + minute);
-                        finalTime = hourOfDay + ":" + minute;
+                        String tempmin;
+                        if (minute == 0){
+                            tempmin = "00";
+                            selectedtime.setText(hourOfDay + ":" + tempmin);
+                            finalTime = hourOfDay + ":" + tempmin;
+                        }else {
+                            selectedtime.setText(hourOfDay + ":" + minute);
+                            finalTime = hourOfDay + ":" + minute;
+                        }
                     }
                 },12,0,android.text.format.DateFormat.is24HourFormat(mcontext));
                 tpd.show();
