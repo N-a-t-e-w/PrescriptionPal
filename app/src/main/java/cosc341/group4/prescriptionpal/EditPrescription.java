@@ -69,7 +69,7 @@ public class EditPrescription extends AppCompatActivity {
             }
         });
 
-        Button cancel = findViewById(R.id.EditprescCancelBtn);
+        Button cancel = findViewById(R.id.editprescCancelBtn);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -227,6 +227,7 @@ public class EditPrescription extends AppCompatActivity {
 
 
         public void confirmEdit(View view){
+
         updatedateday();
         final TextView TimeTv = findViewById(R.id.EditPrescTimeTV);
         final EditText nameEdit = findViewById(R.id.EditNameEditText);
@@ -264,8 +265,8 @@ public class EditPrescription extends AppCompatActivity {
 
                 JSONArray prescriptsarray = userprescripts.getJSONArray("Prescriptions");
                 prescriptsarray.remove(pos);
-                JSONObject thisprescript = new JSONObject();
-                thisprescript.put("Name",prescName);
+                //JSONObject thisprescript = new JSONObject();
+                //thisprescript.put("Name",prescName);
                 prescriptsarray.put(prescript);
                 newObject.put("Prescriptions",prescriptsarray);
                 outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
@@ -276,5 +277,32 @@ public class EditPrescription extends AppCompatActivity {
             }
         }
         }
+
+        public void deletePrescription(View view){
+        System.out.println("THIS IS RUNNING");
+        try{
+            FileOutputStream outputStream;
+            String filename;
+            if (patientname != null){
+                filename = patientname.toLowerCase().split(" ")[0] + "Prescriptions.json";
+            }else{
+                filename = "UserPrescriptions.json";
+            }
+            JSONObject userprescripts = getJsonObject();
+            JSONObject newObject = new JSONObject();
+            JSONArray prescriptsarray = userprescripts.getJSONArray("Prescriptions");
+            System.out.println(pos);
+            prescriptsarray.remove(pos);
+            newObject.put("Prescriptions",prescriptsarray);
+            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+            String contents = newObject.toString();
+            outputStream.write(contents.getBytes());
+            finish();
+
+        }
+    catch(Exception e){
+
+        }
+    }
         }
 

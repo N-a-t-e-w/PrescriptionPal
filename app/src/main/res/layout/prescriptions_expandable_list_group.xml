@@ -1,39 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="?android:listPreferredItemPaddingLeft"
     android:paddingLeft="35dp"
     android:paddingStart="35dp">
 
-    <LinearLayout
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/prescriptions_prescription_group"
-        android:textSize="24sp"
-        android:text="Group"/>
-        </LinearLayout>
 
-    <LinearLayout
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:orientation="horizontal">
-        <Button
+        <TextView
+            android:id="@+id/prescriptions_prescription_group"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorAccent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Group"
+            android:textSize="24sp" />
+
+        <Button
             android:id="@+id/editPrescriptBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
             android:focusable="false"
-            android:textSize="18sp"
+            android:onClick="editPrescript"
             android:text="@string/edit"
-            android:onClick="editPrescript"/>
-    </LinearLayout>
+            android:textSize="18sp" />
 
 
-    </LinearLayout>
+
+</LinearLayout>

@@ -62,6 +62,9 @@ public class PatientsListAdapter extends BaseExpandableListAdapter {
         Button button = convertView.findViewById(R.id.patients_prescription_button);
         button.setContentDescription(String.valueOf(getGroup(groupPosition)));
 
+        Button button2 = convertView.findViewById(R.id.patients_edit_button);
+        button2.setContentDescription(String.valueOf(getGroup(groupPosition)));
+
         TextView textView = convertView.findViewById(R.id.patients_prescription_group);
         textView.setText(String.valueOf(getGroup(groupPosition)));
         return convertView;

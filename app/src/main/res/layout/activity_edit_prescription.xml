@@ -7,7 +7,7 @@
     tools:context=".EditPrescription">
 
     <Button
-        android:id="@+id/EditprescCancelBtn"
+        android:id="@+id/editprescCancelBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -16,6 +16,17 @@
         android:text="@string/Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/EditPrescDeleteBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:onClick="deletePrescription"
+        android:text="@string/Delete"
+        app:layout_constraintEnd_toStartOf="@+id/editPrescCnfrmBtn"
+        app:layout_constraintStart_toEndOf="@+id/editprescCancelBtn"
+        app:layout_constraintTop_toTopOf="@+id/editPrescCnfrmBtn" />
 
     <Button
         android:id="@+id/editPrescCnfrmBtn"
@@ -186,7 +197,7 @@
         android:layout_marginBottom="16dp"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/EditprescCancelBtn"
+        app:layout_constraintBottom_toTopOf="@+id/EditPrescDeleteBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -217,7 +228,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimary"
         android:text="Set Time"
         app:layout_constraintEnd_toEndOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="@+id/textView6"

@@ -43,9 +43,8 @@
     <string name="PatientAge">Patient Age:</string>
     <string name="PatientInfo">Patient Info:</string>
     <string name="AddPatient">Add Patient</string>
-
-
-
+    <string name="Delete">Delete</string>
+    <string name="editpatient">Edit Patient</string>
 
 
 </resources>

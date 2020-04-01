@@ -156,4 +156,13 @@ public class PatientsActivity extends AppCompatActivity {
     public void goHome(View view){
         finish();
     }
+
+    public void editPatient(View view){
+        Button b = view.findViewById(R.id.patients_edit_button);
+        String name = b.getContentDescription().toString();
+
+        Intent intent = new Intent(getApplicationContext(), EditPatient.class);
+        intent.putExtra(PATIENT, name);
+        startActivity(intent);
+    }
 }
