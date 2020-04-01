@@ -45,6 +45,8 @@
     <string name="AddPatient">Add Patient</string>
     <string name="Delete">Delete</string>
     <string name="editpatient">Edit Patient</string>
+    <string name="Patience">Patients</string>
+
 
 
 </resources>

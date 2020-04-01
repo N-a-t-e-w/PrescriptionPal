@@ -50,7 +50,7 @@ public class HistoryActivity extends AppCompatActivity {
             textView.setText(titletext);
 
             Button button = findViewById(R.id.history_home_button);
-            button.setText(R.string.back);
+            button.setText(R.string.Patience);
         }
 
         date = findViewById(R.id.history_date_textview);

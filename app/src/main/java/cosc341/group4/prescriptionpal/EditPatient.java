@@ -112,9 +112,28 @@ public class EditPatient extends AppCompatActivity {
     }
 
 
-    public void delete(View view){
+    public void delete(View view) {
+        try {
+            FileOutputStream outputStream;
+            String filename = "patients.json";
 
+            JSONObject Patients = getJsonObject();
+            JSONObject newObject = new JSONObject();
+
+            JSONArray Patientsarray = Patients.getJSONArray("Patients");
+            Patientsarray.remove(pos);
+
+            newObject.put("Patients",Patientsarray);
+            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+            String contents = newObject.toString();
+            outputStream.write(contents.getBytes());
+            finish();
+
+        } catch (Exception e) {
+
+        }
     }
+
     public void cancel(View view){
         finish();
     }

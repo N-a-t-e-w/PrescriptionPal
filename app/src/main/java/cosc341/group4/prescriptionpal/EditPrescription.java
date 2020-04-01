@@ -279,7 +279,6 @@ public class EditPrescription extends AppCompatActivity {
         }
 
         public void deletePrescription(View view){
-        System.out.println("THIS IS RUNNING");
         try{
             FileOutputStream outputStream;
             String filename;
